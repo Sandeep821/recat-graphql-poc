@@ -4,12 +4,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## 1 - The following packages needs to be installed
 
-apollo-boost: Package containing everything you need to set up Apollo Client
-react-apollo: View layer integration for React
-graphql-tag: Necessary for parsing your GraphQL queries
-graphql: Also parses your GraphQL queries
+- apollo-boost: Package containing everything you need to set up Apollo Client
+- react-apollo: View layer integration for React
+- graphql-tag: Necessary for parsing your GraphQL queries
+- graphql: Also parses your GraphQL queries
 
+```
 $ npm install apollo-boost react-apollo graphql-tag graphql
+```
 
 ## 2 - Creating An Instance Of ApolloClient
 
@@ -17,6 +19,28 @@ In order to be able to access a GraphQL service from our React application we ne
 
 ## 3 - Connecting ApolloClient To Your React App
 Having established a connection to the GraphQL endpoint by using ApolloClient we now need to connect the instance of ApolloClient to the React app. To do so, please make sure to add the following lines of code in App.js:
+
+## 4 - Using Query Component To Request Data
+To retrieve data from the GraphQL endpoint this component makes use of another component from the React Apollo library: Query. The Query component makes it extremely easy to embed the GraphQL query directly in the JSX code of the component. Furthermore the Query component contains a callback method which is invoked once the GraphQL query is executed.
+
+Query example : 
+
+```
+<Query
+    query={gql`
+      {
+        allCourses {
+          id
+          title
+          author
+          description
+          topic
+          url
+        }
+      }
+    `}
+  >
+```
 
 
 ## DEMO : https://codesandbox.io/s/100oq6m98q
