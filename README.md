@@ -1,5 +1,16 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+#STEPS to consume GraphQl Apis in React App
+
+## 1- The following packages needs to be installed:
+
+apollo-boost: Package containing everything you need to set up Apollo Client
+react-apollo: View layer integration for React
+graphql-tag: Necessary for parsing your GraphQL queries
+graphql: Also parses your GraphQL queries
+
+$ npm install apollo-boost react-apollo graphql-tag graphql
+
 ## Available Scripts
 
 In the project directory, you can run:
