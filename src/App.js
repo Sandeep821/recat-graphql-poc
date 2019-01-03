@@ -10,17 +10,24 @@ let year = 1;
 
 class App extends Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
-      year: 0
+      year: 0,
+      userPick: ''
     }
-    this.showyearlyData = this.showyearlyData.bind(this)
+    this.showyearlyData = this.showyearlyData.bind(this);
+    this.userPick = this.userPick.bind(this);
     }
 
     showyearlyData (yr) {
     console.log('showyearlyData', yr);
     this.setState({ year : yr})
+    }
+
+    userPick (e) {
+      console.log('user picked ', e.target.value)
+     // this.setState({userPick : 'test'})
     }
 
   render() {
@@ -33,11 +40,7 @@ class App extends Component {
 
     const userTile = {
       color: '#333',
-      padding: '10px',
-      marginBottom: '22px',
-      border: '1px solid #ddd',
-      backgroundColor: '#FDFDFD',
-      borderRadius: '5px'
+
     }
     const header = {
       padding: '10px',
@@ -45,10 +48,7 @@ class App extends Component {
       border: '1px solid #ccc',
       margin: '15px',
       backgroundColor: '#ddd'
-    }
-
-    const subHeader = {
-      margin: '10px',
+    
     }
 
 
@@ -59,7 +59,7 @@ class App extends Component {
         <h2>React > GraphQl > Apollo sample app</h2>
       </div>
 
-      <div style={subHeader}>
+      <div className="col-sm-12 sub-header" >
         &nbsp;<button onClick={() => this.showyearlyData(0)} type="button" className={"btn btn-lg " + (this.state.year === 0 ? 'btn-primary' : 'btn-default')}>2019</button>&nbsp;
         <button onClick={() => this.showyearlyData(1)} type="button" className={"btn btn-lg " + (this.state.year === 1 ? 'btn-primary' : 'btn-default')}>2018</button>&nbsp;
         <button onClick={() => this.showyearlyData(2)} type="button" className={"btn btn-lg " + (this.state.year === 2 ? 'btn-primary' : 'btn-default')}>2017</button>
@@ -92,14 +92,13 @@ class App extends Component {
      return data.GetModelTrimsByYear.data[this.state.year].modelTrims.data.map(({ modelName, modelSalesYear, media }) => (
        <div className="">
         <div className="col-sm-3">
-        <div  style={userTile} >
-        <img width="200" src={` ${media.imageUrl}`} alt={modelName}/>
-          <p><strong>{` ${modelName} ${modelSalesYear}`}</strong> </p>
+        <div style={userTile} className="tile" >
+         {/*  <input type="radio" id={modelName} value={modelName} onClick={this.userPick}/> */}
+          <img width="200" src={` ${media.imageUrl}`} alt={modelName}/>
+          <p><strong>{` ${modelName}, ${modelSalesYear}`}</strong> </p>
         </div>
         </div>
        </div>
-       
-        
       ));
     }}
   </Query>
