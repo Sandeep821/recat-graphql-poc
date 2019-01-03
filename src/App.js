@@ -34,26 +34,36 @@ class App extends Component {
     const userTile = {
       color: '#333',
       padding: '10px',
-      marginBottom: '10px',
-      border: '1px solid'
+      marginBottom: '22px',
+      border: '1px solid #ddd',
+      backgroundColor: '#FDFDFD',
+      borderRadius: '5px'
     }
     const header = {
       padding: '10px',
+      paddingBottom: '20px',
+      border: '1px solid #ccc',
+      margin: '15px',
+      backgroundColor: '#ddd'
+    }
+
+    const subHeader = {
+      margin: '10px',
     }
 
 
 
     return (
       <ApolloProvider client={client}>
-      <div style={header}>
-        <h2>REACT GRAPHQL Apollo sample app</h2>
-      <div>
-      &nbsp;<button onClick={() => this.showyearlyData(0)} type="button" class="btn btn-lg btn-primary">2019</button> &nbsp;
-      <button onClick={() => this.showyearlyData(1)} type="button" class="btn btn-lg btn-default">2018</button>&nbsp;
-      <button onClick={() => this.showyearlyData(2)} type="button" class="btn btn-lg btn-default">2017</button>
+      <div style={header} className="navbar navbar-dark bg-dark shadow-sm">
+        <h2>React > GraphQl > Apollo sample app</h2>
+      </div>
 
-    </div>
-    </div>
+      <div style={subHeader}>
+        &nbsp;<button onClick={() => this.showyearlyData(0)} type="button" className={"btn btn-lg " + (this.state.year === 0 ? 'btn-primary' : 'btn-default')}>2019</button>&nbsp;
+        <button onClick={() => this.showyearlyData(1)} type="button" className={"btn btn-lg " + (this.state.year === 1 ? 'btn-primary' : 'btn-default')}>2018</button>&nbsp;
+        <button onClick={() => this.showyearlyData(2)} type="button" className={"btn btn-lg " + (this.state.year === 2 ? 'btn-primary' : 'btn-default')}>2017</button>
+      </div>
 
     <Query
     query={gql`
