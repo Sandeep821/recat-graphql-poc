@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import './App.css';
+import Loading from "./component/loading/loading"
 
 //get the data from graphQl API
 import { Query } from "react-apollo";
@@ -86,7 +87,7 @@ class App extends Component {
     `}
   >
     {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
+      if (loading) return <Loading/>;
       if (error) return <p>Error :(</p>;
       console.log('got the data', data.GetModelTrimsByYear.data[year].modelTrims.data);
      return data.GetModelTrimsByYear.data[this.state.year].modelTrims.data.map(({ modelName, modelSalesYear, media }) => (
